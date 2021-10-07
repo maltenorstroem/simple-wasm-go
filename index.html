@@ -10,7 +10,6 @@
         WebAssembly.instantiateStreaming(fetch("app.wasm"), go.importObject)
             .then((result) => {
                 go.run(result.instance);
-                // go.run(add(2,4))
                 console.log(sum(2,4))
             })
             .catch((err) => {
