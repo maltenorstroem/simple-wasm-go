@@ -11,11 +11,17 @@
             .then((result) => {
                 go.run(result.instance);
                 console.log(sum(2,4))
+                console.log(getTmpl())
+                const btn = document.createElement(getTmpl())
+                btn.innerText = "WASM button"
+                document.getElementById('container').appendChild(btn)
             })
             .catch((err) => {
                 console.error(err);
             });
     </script>
 </head>
-<body></body>
+<body>
+<div id="container"></div>
+</body>
 </html>
