@@ -11,7 +11,8 @@ func add(this js.Value, p []js.Value) interface{} {
 }
 
 func getTemplate(this js.Value, p []js.Value) interface{} {
-	tmpl := "button"
+	tmpl := "# Mockdata Structure \n We use simple **json files** in a directory structure corresponding to the api hierarchy.\n ## Next Steps"
+
 	return js.ValueOf(tmpl)
 }
 

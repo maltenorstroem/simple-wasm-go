@@ -1,0 +1,4 @@
+[
+  ["*", "unauthorized", "EXTERNAL_LINK: auth.html"],
+  ["*", "flow-home-page-requested", "home"]
+]
