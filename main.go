@@ -1,6 +1,8 @@
 package main
 
 import (
+	"crypto/md5"
+	"encoding/hex"
 	"fmt"
 	"syscall/js"
 )
@@ -16,6 +18,13 @@ func getTemplate(this js.Value, p []js.Value) interface{} {
 	return js.ValueOf(tmpl)
 }
 
+func getMD5(this js.Value, p []js.Value) interface{} {
+	inp := p[0].String()
+	hash := md5.Sum([]byte(inp))
+	return js.ValueOf(hex.EncodeToString(hash[:]))
+
+}
+
 func main() {
 	fmt.Println("Hello, WASM World!")
 
@@ -23,6 +32,7 @@ func main() {
 
 	js.Global().Set("sum", js.FuncOf(add))
 	js.Global().Set("getTmpl", js.FuncOf(getTemplate))
+	js.Global().Set("getMD5", js.FuncOf(getMD5))
 
 	<-c
 

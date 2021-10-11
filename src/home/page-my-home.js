@@ -24,6 +24,7 @@ class PageMyHome extends FBP(LitElement) {
                 go.run(result.instance);
                 console.log(sum(2,4))
                 this.sayHi =getTmpl()
+                this.md5 = getMD5(this.sayHi)
 
                 this.requestUpdate()
 
@@ -65,6 +66,10 @@ class PageMyHome extends FBP(LitElement) {
           padding-bottom: 1rem;
           box-sizing: border-box;
         }
+        
+        furo-markdown {
+            background-color: transparent;
+        }
       `,
     ];
   }
@@ -87,6 +92,7 @@ class PageMyHome extends FBP(LitElement) {
     return html`
       <furo-vertical-scroller>
           <furo-markdown markdown="${this.sayHi}"></furo-markdown>
+          <p>MD5 Sum of markdown: ${this.md5}</p>
           <furo-ui5-button design="Emphasized" @-click="--btnClicked"
         >Hello Furo meets SAP Fiori!</furo-ui5-button>
      </furo-vertical-scroller>`;
