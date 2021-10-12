@@ -1,7 +1,7 @@
 {
-  "name": "Furo Webclient Getting Started",
-  "short_name": "Furo Webapp",
-  "description": "",
+  "name": "Furo WASM",
+  "short_name": "Furo WASM",
+  "description": "Furo web interacts with webassembly",
   "start_url": ".",
   "icons": [
     {

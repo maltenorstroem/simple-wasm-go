@@ -102,10 +102,7 @@ class ViewHomepage extends FBP(LitElement) {
         <ui5-shellbar
           @-notifications-click="--notificationsRequested(*.detail.targetRef)"
           primary-title="Launchpad"
-          show-notifications
         >
-          <ui5-shellbar-item id="search" icon="search" text="Search"></ui5-shellbar-item>
-
           <ui5-avatar slot="logo" initials="FU" color-schema="Accent1" size="XS"></ui5-avatar>
         </ui5-shellbar>
 
