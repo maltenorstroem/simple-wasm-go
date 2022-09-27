@@ -27,6 +27,19 @@ class PageMyHome extends FBP(LitElement) {
         this.sayHi = getTmpl();
         this.md5 = getMD5(this.sayHi);
 
+        let msg = {
+            "id": {
+                "id": {
+                    "identifier": "-41001"
+                },
+                "display_name": "In Bearbeitung"
+            },
+            "internal_name": "Running",
+            "short_form": "ActRun"
+        }
+
+       console.log(jsonToProto(JSON.stringify(msg)));
+
         this.requestUpdate();
       })
       .catch(err => {
