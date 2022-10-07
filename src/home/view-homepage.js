@@ -101,7 +101,7 @@ class ViewHomepage extends FBP(LitElement) {
         such as: logo, profile image/icon, title, search field, notifications and so on.-->
         <ui5-shellbar
           @-notifications-click="--notificationsRequested(*.detail.targetRef)"
-          primary-title="Launchpad"
+          primary-title="Webassembly Protocol Buffer Lab"
         >
           <ui5-avatar slot="logo" initials="FU" color-schema="Accent1" size="XS"></ui5-avatar>
         </ui5-shellbar>
