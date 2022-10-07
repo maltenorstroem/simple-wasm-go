@@ -1,22 +1,20 @@
 import { LitElement, html, css } from 'lit';
-import { Theme } from '@furo/framework/src/theme.js';
 import { FBP } from '@furo/fbp/src/fbp.js';
+import { i18n } from '@furo/framework/src/i18n.js';
 
 import '@furo/route/src/furo-app-flow.js';
 import '@furo/layout/src/furo-vertical-flex.js';
-import '@furo/layout/src/furo-vertical-scroller.js';
-import '@ui5/webcomponents-fiori/dist/ShellBar.js';
-import '@ui5/webcomponents/dist/Button.js';
-import '@ui5/webcomponents/dist/Title.js';
-import '@ui5/webcomponents/dist/Icon.js';
 
-import '@ui5/webcomponents-icons/dist/show.js';
+import '@ui5/webcomponents/dist/Button.js';
+import '@ui5/webcomponents-fiori/dist/ShellBar.js';
+import '@ui5/webcomponents-fiori/dist/IllustratedMessage.js';
+import '@ui5/webcomponents-fiori/dist/illustrations/PageNotFound.js';
 
 /**
  * `view-404`
  * Message pages give feedback to the user when an app or list is empty, or when an error has occurred.
+ * Page not found (http status 404):
  * Should display the following text: “Sorry, we can’t find this page. Please check the URL you are using to call the app.”
- * The icon name is "document".
  *
  * @summary message pages
  * @customElement
@@ -28,6 +26,7 @@ class View404 extends FBP(LitElement) {
    */
   _FBPReady() {
     super._FBPReady();
+    // this._FBPTraceWires()
   }
 
   /**
@@ -37,24 +36,16 @@ class View404 extends FBP(LitElement) {
    */
   static get styles() {
     // language=CSS
-    return (
-      Theme.getThemeForComponent(this.name) ||
-      css`
-        :host {
-          display: block;
-          height: 100%;
-        }
+    return css`
+      :host {
+        display: block;
+        height: 100%;
+      }
 
-        :host([hidden]) {
-          display: none;
-        }
-
-        div.initial {
-          margin: 15% auto;
-          text-align: center;
-        }
-      `
-    );
+      :host([hidden]) {
+        display: none;
+      }
+    `;
   }
 
   /**
@@ -66,19 +57,18 @@ class View404 extends FBP(LitElement) {
     // language=HTML
     return html`
       <furo-vertical-flex>
-        <furo-vertical-scroller>
-          <ui5-shellbar primary-title="Page not found" secondary-title="">
-            <ui5-button icon="home" slot="startButton" @-click="--homeRequested"></ui5-button>
-          </ui5-shellbar>
+        <ui5-shellbar primary-title="${i18n.t('web.core.status404.shellbar.heading')}">
+          <ui5-button icon="nav-back" slot="startButton" at-click="--historyBack"></ui5-button>
+        </ui5-shellbar>
 
-          <div class="initial">
-            <ui5-icon name="document" style="width:6rem;height:6rem;"></ui5-icon>
-            <ui5-title level="H1">Sorry, we can't find this page</ui5-title>
-          </div>
-        </furo-vertical-scroller>
+        <ui5-illustrated-message flex scroll name="PageNotFound">
+          <ui5-button design="Emphasized" at-click="--historyBack"
+            >${i18n.t('web.core.common.actions.goback')}</ui5-button
+          >
+        </ui5-illustrated-message>
       </furo-vertical-flex>
 
-      <furo-app-flow ƒ-emit="--homeRequested" event="flow-home-page-requested"></furo-app-flow>
+      <furo-app-flow fn-emit="--historyBack" event="history-back"></furo-app-flow>
     `;
   }
 }

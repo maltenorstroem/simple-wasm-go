@@ -111,7 +111,6 @@ class ViewHomepage extends FBP(LitElement) {
           class="full-width"
           collapsed
           fixed
-          show-overflow
           @-tab-select="--subTabSelected"
         >
           <!-- The ui5-tab represents a selectable item inside a ui5-tabcontainer.

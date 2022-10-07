@@ -21,7 +21,7 @@ class PageMyHome extends FBP(LitElement) {
     constructor() {
         super();
         const go = new Go();
-        WebAssembly.instantiateStreaming(fetch('../../app.wasm'), go.importObject)
+        WebAssembly.instantiateStreaming(fetch('./app.wasm'), go.importObject)
             .then(result => {
                 go.run(result.instance);
                 console.log(sum(2, 4));

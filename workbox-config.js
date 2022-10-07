@@ -3,12 +3,21 @@ module.exports = {
   //                                   https://developers.google.com/web/tools/workbox/reference-docs/latest/module-workbox-build#.generateSW
   swDest: 'dist/service-worker.js',
   globDirectory: 'dist',
-  cacheId: 'FuroSample',
-  globPatterns: ['assets/**', '**/*.{js,json}'], // , 'index.html' removed to force a initial html load
+  cacheId: '@APPLICATION_ID@',
+  globPatterns: ['favicon.ico', 'assets/**', 'src/configs/**', '**/*.{js,json,webmanifest}'], // , 'index.html' removed to force a initial html load
   globStrict: true,
   navigationPreload: false,
   mode: 'production',
   cleanupOutdatedCaches: true,
-  navigateFallbackDenylist: [],
-  runtimeCaching: [],
+  // navigateFallback: 'index.html', // removed to force a initial html load
+  navigateFallbackDenylist: [/^.*auth\.html$/],
+  runtimeCaching: [
+    {
+      urlPattern: /^https:\/\/ui5\.sap\.com/,
+      handler: 'StaleWhileRevalidate',
+      options: {
+        cacheName: 'sap-ui5-fonts-stylesheets',
+      },
+    },
+  ],
 };
