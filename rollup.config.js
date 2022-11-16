@@ -34,6 +34,7 @@ const copyConf = merge(baseConfig, {
     copy({
       targets: [
         { src: 'assets/**/*', dest: 'dist/assets' },
+        { src: 'src/configs/flowConfig.flow', dest: 'dist/src' },
         { src: 'manifest.webmanifest', dest: 'dist' },
         { src: 'robots.txt', dest: 'dist' },
         { src: 'favicon.ico', dest: 'dist' },
