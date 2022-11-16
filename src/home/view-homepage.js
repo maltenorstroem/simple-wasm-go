@@ -107,12 +107,7 @@ class ViewHomepage extends FBP(LitElement) {
         </ui5-shellbar>
 
         <!-- Sub navigation bar -->
-        <ui5-tabcontainer
-          class="full-width"
-          collapsed
-          fixed
-          @-tab-select="--subTabSelected"
-        >
+        <ui5-tabcontainer class="full-width" collapsed fixed @-tab-select="--subTabSelected">
           <!-- The ui5-tab represents a selectable item inside a ui5-tabcontainer.
                For the interaction with furo-pages to work, the attribute data-tab must be set. -->
           <ui5-tab
